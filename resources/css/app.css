@@ -1,0 +1,109 @@
+/* Tailwind Base */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* General Container Styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+h1,
+h2 {
+    color: #333;
+}
+
+/* Section-Specific Styling */
+.e-learning-platform,
+.expert-consultation {
+    margin-top: 2rem;
+}
+
+.e-learning-platform h2,
+.expert-consultation h2 {
+    font-size: 1.5rem;
+    color: #0056b3;
+    margin-bottom: 1rem;
+}
+
+/* General Body Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Layout Styling */
+#app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #333, #555);
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    height: 100vh;
+    transition: width 0.3s;
+}
+
+.sidebar:hover {
+    width: 270px;
+}
+
+/* Sidebar Title */
+.sidebar h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Button-Like Menu Items */
+.sidebar a {
+    display: block;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.sidebar a.active {
+    background-color: #1abc9c;
+}
+
+/* Content Area Styling */
+.content {
+    flex: 1;
+    padding: 40px;
+    margin-left: 270px;
+    /* Adjusted for expanded sidebar */
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
