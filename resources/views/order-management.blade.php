@@ -39,7 +39,7 @@
                     <th>Order ID</th>
                     <th>Product Name</th>
                     <th>Quantity</th>
-                    <th>Total Price</th>
+                    <th>Total Price (UGX)</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -50,7 +50,7 @@
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->product->name }}</td>
                         <td>{{ $order->quantity }}</td>
-                        <td>${{ $order->total_price }}</td>
+                        <td>{{ number_format($order->total_price) }} </td> <!-- Updated price display -->
                         <td>{{ ucfirst($order->status) }}</td>
                         <td>
                             <!-- Actions such as updating status or marking as delivered -->

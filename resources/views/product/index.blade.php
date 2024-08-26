@@ -12,7 +12,7 @@
                     <th>Product ID</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Price</th>
+                    <th>Price (UGX)</th>
                     <th>Quantity</th>
                     <th>Actions</th>
                 </tr>
@@ -23,10 +23,16 @@
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
-                        <td>${{ $product->price }}</td>
+                        <td>{{ number_format($product->price) }} </td> <!-- Display price in UGX -->
                         <td>{{ $product->quantity }}</td>
                         <td>
                             <!-- Actions such as editing or deleting products -->
+                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

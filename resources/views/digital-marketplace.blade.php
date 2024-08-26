@@ -12,7 +12,7 @@
                 @foreach($products as $product)
                     <div class="product-item">
                         <h3>{{ $product->name }}</h3>
-                        <p>Price: ${{ $product->price }}</p>
+                        <p>Price: {{ number_format($product->price * 3800) }} UGX</p> <!-- Updated price display -->
                         <p>{{ $product->description }}</p>
                         <a href="{{ route('product.details', $product->id) }}" class="btn btn-primary">View Details</a>
                     </div>

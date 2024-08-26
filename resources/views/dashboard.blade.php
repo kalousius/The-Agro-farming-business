@@ -40,7 +40,7 @@
             border-radius: 4px;
         }
 
-        .sidebar a:hover {
+        .sidebar a.active, .sidebar a:hover {
             background-color: #495057;
         }
 
@@ -51,7 +51,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
             border-radius: 8px;
@@ -106,20 +106,20 @@
 <body>
     <div class="sidebar">
         <h2>Menu</h2>
-        <a href="{{ route('dashboard') }}">Dashboard</a>
-        <a href="{{ route('profile.edit') }}">Profile</a>
-        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-    <!-- New Menus -->
-    <h3>Features</h3>
-    <a href="{{ route('mobile.app.integration') }}">Mobile App Integration</a>
-    <a href="{{ route('digital.marketplace') }}">Digital Marketplace for Farm Produce</a>
-    <a href="{{ route('farm.management.tools') }}">Farm Management Tools</a>
-    <a href="{{ route('educational.resources.training') }}">Educational Resources and Training</a>
-    <a href="{{ route('weather.forecast.advisory') }}">Weather Forecast and Advisory System</a>
-    <a href="{{ route('crop.disease.diagnosis') }}">Crop Disease Diagnosis and Management</a>
-    <a href="{{ route('community.networking.collaboration') }}">Community Networking and Collaboration</a>
-    <a href="{{ route('financial.services.access') }}">Access to Financial Services</a>
-</div>
+        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
+        <a href="{{ route('profile.edit') }}" class="{{ request()->routeIs('profile.edit') ? 'active' : '' }}">Profile</a>
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="{{ request()->routeIs('logout') ? 'active' : '' }}">Logout</a>
+
+        <h3>Features</h3>
+        <a href="{{ route('mobile.app.integration') }}" class="{{ request()->routeIs('mobile.app.integration') ? 'active' : '' }}">Mobile App Integration</a>
+        <a href="{{ route('digital.marketplace') }}" class="{{ request()->routeIs('digital.marketplace') ? 'active' : '' }}">Digital Marketplace for Farm Produce</a>
+        <a href="{{ route('farm.management.tools') }}" class="{{ request()->routeIs('farm.management.tools') ? 'active' : '' }}">Farm Management Tools</a>
+        <a href="{{ route('educational.resources.training') }}" class="{{ request()->routeIs('educational.resources.training') ? 'active' : '' }}">Educational Resources and Training</a>
+        <a href="{{ route('weather.forecast.advisory') }}" class="{{ request()->routeIs('weather.forecast.advisory') ? 'active' : '' }}">Weather Forecast and Advisory System</a>
+        <a href="{{ route('crop.disease.diagnosis') }}" class="{{ request()->routeIs('crop.disease.diagnosis') ? 'active' : '' }}">Crop Disease Diagnosis and Management</a>
+        <a href="{{ route('community.networking.collaboration') }}" class="{{ request()->routeIs('community.networking.collaboration') ? 'active' : '' }}">Community Networking and Collaboration</a>
+        <a href="{{ route('financial.services.access') }}" class="{{ request()->routeIs('financial.services.access') ? 'active' : '' }}">Access to Financial Services</a>
+    </div>
 
     <div class="main-content">
         <div class="container">

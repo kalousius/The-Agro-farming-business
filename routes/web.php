@@ -8,6 +8,7 @@ use App\Http\Controllers\CropDiagnosisController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MarketplaceController;
 
 // Route for the home page
@@ -76,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('products/{id}', [ProductController::class, 'show'])->name('product.details');
 });
 
 // Routes for authentication
@@ -89,5 +91,17 @@ Route::post('/get-weather', [WeatherController::class, 'getWeather'])->name('get
 Route::get('/digital-marketplace', [MarketplaceController::class, 'index'])->name('digital.marketplace');
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
+
+// Dashboard Route for the Dasboard view
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Additional feature routes
+Route::get('/mobile-app-integration', [FeatureController::class, 'mobileAppIntegration'])->name('mobile.app.integration');
+Route::get('/digital-marketplace', [FeatureController::class, 'digitalMarketplace'])->name('digital.marketplace');
+Route::get('/farm-management-tools', [FeatureController::class, 'farmManagementTools'])->name('farm.management.tools');
+Route::get('/educational-resources-training', [FeatureController::class, 'educationalResourcesTraining'])->name('educational.resources.training');
+Route::get('/weather-forecast-advisory', [FeatureController::class, 'weatherForecastAdvisory'])->name('weather.forecast.advisory');
+Route::get('/crop-disease-diagnosis', [FeatureController::class, 'cropDiseaseDiagnosis'])->name('crop.disease.diagnosis');
+Route::get('/community-networking-collaboration', [FeatureController::class, 'communityNetworkingCollaboration'])->name('community.networking.collaboration');
+Route::get('/financial-services-access', [FeatureController::class, 'financialServicesAccess'])->name('financial.services.access');
 // Include Laravel's default authentication routes
 require __DIR__.'/auth.php';
