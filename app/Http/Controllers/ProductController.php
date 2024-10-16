@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -32,5 +33,15 @@ class ProductController extends Controller
         Product::create($request->all());
 
         return redirect()->route('product.index')->with('success', 'Product added successfully.');
+    }
+
+    // Show details of a single product
+    public function show($id)
+    {
+        // Find the product by its ID
+        $product = Product::findOrFail($id);
+
+        // Pass the product to the correct view
+        return view('product.show', compact('product')); // Update to 'product.show'
     }
 }

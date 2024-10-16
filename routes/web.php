@@ -64,19 +64,25 @@ Route::middleware('auth')->group(function () {
     // Consultation Booking Route
     Route::post('/book-consultation', [ConsultationController::class, 'bookConsultation'])->name('book.consultation');
 
-    // Order Management Routes
-    Route::get('/order-management', [OrderController::class, 'index'])->name('order.management');
-    Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
-    Route::get('/orders/{id}/update', [OrderController::class, 'update'])->name('order.update');
+   // Order Management Routes
+Route::get('/order-management', [OrderController::class, 'index'])->name('order.management'); // To display the orders and products
+Route::post('/order', [OrderController::class, 'store'])->name('order.store'); // To store a new order
+Route::get('/order/{id}/update', [OrderController::class, 'update'])->name('order.update'); // To update the order status
+Route::get('/order', [OrderController::class, 'index'])->name('orders.index'); // Optional, if you want a separate route for viewing orders
 
-    // Product Management Routes
-    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
-    Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
-    Route::post('/products', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
-    Route::put('/products/{id}', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
-});
+
+   // Product Management Routes
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+// This is the route for showing a single product. Keep the naming consistent ('products' plural).
+//Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');
+ Route::get('/products/{product}', 'ProductController@show')->name('product.details');
+    
 
 // Routes for authentication
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -88,6 +94,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/get-weather', [WeatherController::class, 'getWeather'])->name('get.weather');
 Route::get('/digital-marketplace', [MarketplaceController::class, 'index'])->name('digital.marketplace');
 
-Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 // Include Laravel's default authentication routes
 require __DIR__.'/auth.php';
